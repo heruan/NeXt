@@ -31,6 +31,10 @@
                 };
 
                 this._globalListeners = {};
+
+                Document.ready(function () {
+                    self.getContainer().$dom.appendChild(nx.ui.PopupContainer.container().view().dom().$dom);
+                });
             },
             /**
              * Start the application.

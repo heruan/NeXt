@@ -7674,6 +7674,10 @@ var nx = {
                 };
 
                 this._globalListeners = {};
+
+                Document.ready(function () {
+                    self.getContainer().$dom.appendChild(nx.ui.PopupContainer.container().view().dom().$dom);
+                });
             },
             /**
              * Start the application.
@@ -8220,7 +8224,6 @@ var nx = {
              * @class nx.ui.PopupContainer
              * @static
              */
-
             nx.define("nx.ui.PopupContainer", {
                 static: true,
                 properties: {
@@ -8237,20 +8240,11 @@ var nx = {
                 }
             });
         }
-
-        if (document.body && nx && nx.ui) {
-            if (document.body.firstChild) {
-                document.body.insertBefore(nx.ui.PopupContainer.container().view().dom().$dom, document.body.firstChild);
-            } else {
-                document.body.appendChild(nx.ui.PopupContainer.container().view().dom().$dom);
-            }
-        } else {
-            setTimeout(arguments.callee, 10);
-        }
     })();
 
 
 })(nx, nx.global);
+
 (function (nx, global) {
 
     var Container = nx.ui.PopupContainer;
